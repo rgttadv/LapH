@@ -1,0 +1,33 @@
+# general settings
+name: LapH_test_speed_IV
+model_type: LapHTestModel
+num_gpu: 1  # set num_gpu: 0 for cpu mode
+manual_seed: 10
+
+# dataset and data loader settings
+datasets:
+
+  test:
+    name: IV_Fusion
+    type: FusionImageDataset
+    dataroot_vi: datasets/IR_VIS/TEST_VIS.lmdb
+    dataroot_ir: datasets/IR_VIS/TSET_IR.lmdb
+    io_backend:
+      type: lmdb
+
+# network structures
+network_g:
+  type: LapH
+  hf_dim: 16
+  lf_dim: 32
+  num_high: 3
+
+# path
+path:
+  pretrain_network_g: pretrained_weights/IV_Fusion/models/net_g_lateset.pth
+  strict_load_g: false
+
+val:
+# Be careful that this number is related to the length of imgs
+  num_img: 50
+  times_per_img: 50

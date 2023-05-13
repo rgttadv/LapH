@@ -1,0 +1,40 @@
+# general settings
+name: LapH_test_speed_med_spect
+model_type: LapHTestModel
+num_gpu: 1  # set num_gpu: 0 for cpu mode
+manual_seed: 10
+
+# dataset and data loader settings
+datasets:
+
+  test:
+    name: Med_Fusion
+    type: FusionImageDataset
+    # PET——MRI
+    # dataroot_vi: datasets/Medical/PET_MRI/TEST_MRI.lmdb
+    # dataroot_ir: datasets/Medical/PET_MRI/TEST_PET.lmdb
+    # SPECT——MRI
+    dataroot_vi: datasets/Medical/SPECT_MRI/TEST_MRI.lmdb
+    dataroot_ir: datasets/Medical/SPECT_MRI/TEST_SPECT.lmdb
+    io_backend:
+      type: lmdb
+
+# network structures
+network_g:
+  type: LapH
+  hf_dim: 16
+  lf_dim: 32
+  num_high: 3
+
+# path
+path:
+  # PET——MRI
+  # pretrain_network_g: pretrained_weights/Med_PET_Fusion/models/net_g_latest.pth
+  # SPECT——MRI
+  pretrain_network_g: pretrained_weights/Med_SPECT_Fusion/models/net_g_latest.pth
+  strict_load_g: false
+
+val:
+# Be careful that this number is related to the length of imgs
+  num_img: 120
+  times_per_img: 50

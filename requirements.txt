@@ -1,0 +1,14 @@
+torch==1.10.1
+torchvision==0.11.2
+timm==0.6.11
+opencv-python
+tqdm
+Pillow
+pyyaml
+requests
+scikit-image
+scipy
+lmdb
+yapf
+addict
+future
